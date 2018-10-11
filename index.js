@@ -45,8 +45,8 @@ var server = http.createServer(function (request, response) {
     // response.setHeader('Content-Type','image/jpg')
     response.statusCode = 200
     response.write(`
-  xxx.call(undefined,'success')
-    amount.innerText=amount.innerText-1`)
+     ${query.callbackName}.call(undefined,'success')
+  `)
     //response.write(fs.readFileSync('./dog.jpg'))
     response.end()
   } else {
