@@ -1,0 +1,29 @@
+﻿<title>首页</title>
+<h5>余额是
+    <span id="amount">&&&amount&&&</span>
+    <button id="button">钱</button>
+</h5>
+<script>
+    button.addEventListener('click', (e) => {
+        let script = document.createElement('script')//创建一个script
+        script.src = '/pay'
+        document.body.appendChild(script)//用script发请求(get请求)需要放到body里面
+        script.onload = function (e) {
+            e.currentTarget.remove()
+        }
+        script.onerror = function () {
+            e.currentTarget.remove()
+        }
+    })
+
+    //用image发请求
+   // button.addEventListener('click', (e) => {
+    //     let image = document.createElement('img')
+    //     image.src = '/pay'
+    //     image.onload = function () {
+    //         alert('c成功')
+    //         amount.innerText = amount.innerText - 1;
+    //     }
+    //     image.onerror = function () { alert('shibai') }
+    // })
+</script>
