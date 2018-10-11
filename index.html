@@ -4,9 +4,14 @@
     <button id="button">钱</button>
 </h5>
 <script>
+    //SRJ sever rendered javascript
+    window.xxx = function (result) {
+        alert('这是frank的代码')
+        alert(`我的结果是${result}`)
+    }
     button.addEventListener('click', (e) => {
         let script = document.createElement('script')//创建一个script
-        script.src = '/pay'
+        script.src = 'http://jack.com:8002/pay'//通过src网址和网址直接交流
         document.body.appendChild(script)//用script发请求(get请求)需要放到body里面
         script.onload = function (e) {
             e.currentTarget.remove()

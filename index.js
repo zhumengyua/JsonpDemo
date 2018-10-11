@@ -45,7 +45,7 @@ var server = http.createServer(function (request, response) {
     // response.setHeader('Content-Type','image/jpg')
     response.statusCode = 200
     response.write(`
-    alert("成功")
+  xxx.call(undefined,'success')
     amount.innerText=amount.innerText-1`)
     //response.write(fs.readFileSync('./dog.jpg'))
     response.end()
