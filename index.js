@@ -45,8 +45,8 @@ var server = http.createServer(function (request, response) {
     // response.setHeader('Content-Type','image/jpg')
     response.statusCode = 200
     response.write(`
-     ${query.callbackName}.call(undefined,'success')
-  `)
+     ${query.callbackName}.call(undefined,"success") //JSON+PADDING=JSONP
+  `)//精髓
     //response.write(fs.readFileSync('./dog.jpg'))
     response.end()
   } else {

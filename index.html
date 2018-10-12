@@ -1,31 +1,48 @@
 ﻿<title>首页</title>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 <h5>余额是
     <span id="amount">&&&amount&&&</span>
     <button id="button">钱</button>
 </h5>
 <script>
-    //SRJ sever rendered javascript
-    window.xy = function (result) {
-        if (result === 'success')
-        {
-            amount.innerText = amount.innerText - 1;
-        }
-        else {
-            alert('shibai')
-        }
 
-    }
     button.addEventListener('click', (e) => {
-        let script = document.createElement('script')//创建一个script
-        script.src = 'http://jack.com:8002/pay?callbackName=xy'//通过src网址和网址直接交流
-        document.body.appendChild(script)//用script发请求(get请求)需要放到body里面
-        script.onload = function (e) {
-            e.currentTarget.remove()
-        }
-        script.onerror = function () {
-            e.currentTarget.remove()
-        }
+        $.ajax({
+            url: "http://jack.com:8000/pay",
+            dataType: "jsonp",
+            success: function (response) {
+                if (response === 'success') {
+                    alert('111')
+                    amount.innerText = amount.innerText - 1
+                }
+            }
+        })
     })
+    //SRJ sever rendered javascript
+  
+    // 以下都是jsonp的写法。只要用几句JQ就可以完成
+    // button.addEventListener('click', (e) => {
+    //     let script = document.createElement('script')//创建一个script
+    //     let functionName = 'mika' + parseInt(Math.random() * 100000, 10)//创建一个函数名+随机数
+    //     window[functionName] = function (result) {
+    //         if (result === 'success') {
+    //             amount.innerText = amount.innerText - 1;
+    //         }
+    //         else {
+    //             alert('shibai')
+    //         }
+    //     }
+    //     script.src = 'http://jack.com:8000/pay?callback' + functionName//通过src网址和网址直接交流
+    //     document.body.appendChild(script)//用script发请求(get请求)需要放到body里面
+    //     script.onload = function (e) {
+    //         e.currentTarget.remove()
+    //         delete window[functionName]
+    //     }
+    //     script.onerror = function () {
+    //         e.currentTarget.remove()
+    //         delete window[functionName]
+    //     }
+    // })
 
     //用image发请求
    // button.addEventListener('click', (e) => {
